@@ -1,0 +1,11 @@
+{
+  "name": "startupdir",
+  "version": "1.0.0",
+  "description": "FullStack Dev Project Startup Dir | Rooter\u001f47",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Danwand NS",
+  "license": "MIT"
+}
