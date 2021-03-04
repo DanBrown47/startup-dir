@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const Usersw = require('../models/userModel')
+var chalk = require('chalk');
+const Userscheme = require('../models/userModel');
 
 router.post('/add', (req, res, next) => {
-    console.log(req.body)
-    let newUser = new Usersw({
+    let newUser = new Userscheme({
         user_name: req.body.user_name,
         full_name: req.body.full_name,
         passwd: req.body.passwd,
@@ -14,8 +14,10 @@ router.post('/add', (req, res, next) => {
     newUser.save((err, user) => {
         if (err) {
             res.json({ msg: err });
+            console.log(chalk.red("[-] Error While adding stuff to DB", err))
         } else {
             res.json({ msg: 'Added User to DB' })
+            console.log(chalk.green("[+] User added to Database"))
         }
     })
 })

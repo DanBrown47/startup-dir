@@ -14,6 +14,7 @@ app.use(bodyParser.json());
 
 const route = require('./routes/route');
 const user = require('./routes/user');
+const admin = require('./routes/admin')
 
 // Mongoose Connectivity
 
@@ -33,6 +34,7 @@ mongoose.connection.on('error', (err) => {
 
 // app.use('/api', route);
 app.use('/user', user);
+app.use('/admin', admin)
 
 
 app.get('/', (req, res) => {
