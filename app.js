@@ -14,11 +14,12 @@ app.use(bodyParser.json());
 
 const route = require('./routes/route');
 const user = require('./routes/user');
-const admin = require('./routes/admin')
+const admin = require('./routes/admin');
+const manager = require('./routes/manager');
 
 // Mongoose Connectivity
 
-mongoose.connect('mongodb://localhost:27017/startupdir');
+mongoose.connect('mongodb://localhost:27017/startupdir', { useNewUrlParser: true });
 
 //Return
 mongoose.connection.on('connected', () => {
@@ -34,7 +35,8 @@ mongoose.connection.on('error', (err) => {
 
 // app.use('/api', route);
 app.use('/user', user);
-app.use('/admin', admin)
+app.use('/admin', admin);
+app.use('/manager', manager)
 
 
 app.get('/', (req, res) => {

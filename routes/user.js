@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 var chalk = require('chalk');
 const Userscheme = require('../models/userModel');
+const StartupSchema = require('../models/startupModel'); // should do
+
 
 router.post('/add', (req, res, next) => {
     let newUser = new Userscheme({
@@ -23,6 +25,9 @@ router.post('/add', (req, res, next) => {
 })
 
 router.get('/all', (req, res, next) => {
-
+    StartupSchema.find(function(err, startups) {
+        res.json(startups);
+        console.log(chalk.green("[+] Retrived all startups for manager"))
+    })
 })
 module.exports = router;
