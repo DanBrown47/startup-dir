@@ -1,29 +1,34 @@
 const mongoose = require('mongoose');
 
 const StartupSchema = mongoose.Schema({
-        company_name: {
-            type: String,
-            required: true,
-            unique: true
-        },
-        organization: {
-            type: String,
-            required: true
-        },
-        location: {
-            type: String,
-            required: true
-        },
-        growth: {
-            type: String
-        },
-        GSTIN: {
-            type: String
-        },
-        company_admin: {
-            type: String
-        }
-    })
-    // Increase complexity later
+    company_name: {
+        type: String,
+        unique: true
+    },
+    organization: {
+        type: String,
+    },
+    location: {
+        type: String,
+    },
+    gstin: {
+        type: String,
+    },
+    growth: {
+        type: String
+    },
+    websites: {
+        type: String
+    },
+    company_owner: {
+        type: String
+    },
+    upi_id: {
+        type: String
+    },
+    approved: {
+        type: String
+    }
+})
 
 const StartupDB = module.exports = mongoose.model('StartupDB', StartupSchema)

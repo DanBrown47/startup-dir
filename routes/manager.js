@@ -11,11 +11,14 @@ router.post('/add', (req, res, next) => {
         location: req.body.location,
         staff: req.body.staff,
         growth: req.body.growth,
-        GSTIN: req.body.gstin,
-        company_admin: req.body.company_admin
+        gstin: req.body.gstin,
+        websites: req.body.websites,
+        company_owner: req.body.company_owner,
+        upi_id: req.body.upi_id,
+        approved: req.body.approved
     });
 
-
+    console.log(newCompany)
     newCompany.save((err, startups) => {
         if (err) {
             res.json({ msg: err });

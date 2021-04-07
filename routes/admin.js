@@ -8,29 +8,39 @@ var db = mongoose.model('UserDB')
 
 
 router.post('/login', (req, res, next) => {
-    var username = req.body.username;
+    var email = req.body.email;
     var passwd = req.body.passwd;
+    console.log(email, passwd);
+
+
+    // if (email == "SAASC@DFCF.COM" && passwd == "SCSCACASCX") {
+
+    //     res.status(200).json({ "status": "Authentcated" });
+    //     console.log("Authed")
+    // } else {
+    //     res.status(301).json({ "status": "Error in password" });
+    //     console.log("Not Authed")
+    // }
 
     db.find({ "role": "admin" }, (err, docs) => {
         if (!err) {
             for (var i = 0; i < docs.length; i++) {
                 user = docs[i]
-                    // res.json(user["user_name"])
-                if (username == user["user_name"]) {
-                    console.log("User Found")
-                    if (passwd == user["passwd"]) {
-                        res.status(200).json({ "status": "Authinticated" })
-                        res.redirect('/')
-                        var authed = true;
-                    } else {
-                        res.status(401).json({ "status": "Password is wrong" })
-
-                    }
+                    // res.json(user["email"])
+                if (email == user["email"] && passwd == user["passwd"]) {
+                    res.status(200).json({ "status": "Authinticated" });
+                    console.log(chalk.green("Authentucated"));
+                    var auth_sts = true;
+                    break;
                 } else {
-                    res.status(401).json({ "message": "User not Found" })
+                    console.log(chalk.red("Not here"));
+                    auth_sts = false;
                 }
             }
 
+            if (auth_sts == false) {
+                res.status(200).json({ "status": "Username or  password is wrong" })
+            }
 
         }
     })
