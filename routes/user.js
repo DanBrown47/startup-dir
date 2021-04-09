@@ -25,7 +25,7 @@ router.post('/add', (req, res, next) => {
 })
 
 router.get('/all', (req, res, next) => {
-    StartupSchema.find(function(err, startups) {
+    StartupSchema.find({ "approved": "1" }, (err, startups) => {
         res.json(startups);
         console.log(chalk.green("[+] Retrived all startups for manager"))
     })

@@ -5,6 +5,7 @@ const StartupSchema = require('../models/startupModel'); // should do
 
 
 router.post('/add', (req, res, next) => {
+    var not_approved = 0
     let newCompany = new StartupSchema({
         company_name: req.body.company_name,
         organization: req.body.organization,
@@ -15,7 +16,7 @@ router.post('/add', (req, res, next) => {
         websites: req.body.websites,
         company_owner: req.body.company_owner,
         upi_id: req.body.upi_id,
-        approved: req.body.approved
+        approved: not_approved
     });
 
     console.log(newCompany)
