@@ -56,6 +56,16 @@ router.get('/approve/:company_name', (req, res) => {
     res.json({ "status": "ok" })
 })
 
+router.delete('/remove/:id', (req, res) => {
+
+    id = req.params.id;
+    StartupSchema.findByIdAndDelete({ "_id": id })
+        .then(() => {
+            console.log("Success")
+            res.send();
+        })
+})
+
 router.get('/all', (req, res, next) => {
 
     StartupSchema.find((err, startups) => {
